@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moja Edukacyjna Strona</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #495057;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background-color: #6c757d;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 40px;
+      background-color: white;
+      max-width: 900px;
+      margin: auto;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+      nav button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>Moja Edukacyjna Strona</header>
+
+<nav>
+  <button class="tab-btn active" data-tab="polski">Polski</button>
+  <button class="tab-btn" data-tab="matma">Matma</button>
+  <button class="tab-btn" data-tab="linux">Linux</button>
+  <button class="tab-btn" data-tab="informatyka">Informatyka</button>
+</nav>
+
+<section id="polski" class="tab-content active">
+  <h2>Język Polski</h2>
+  <p>Materiały z języka polskiego, analizy lektur, gramatyka, pisanie rozprawek i wiele więcej.</p>
+</section>
+
+<section id="matma" class="tab-content">
+  <h2>Matematyka</h2>
+  <p>Równania, geometria, analiza matematyczna, logika – wszystko czego potrzebujesz do nauki matematyki.</p>
+</section>
+
+<section id="linux" class="tab-content">
+  <h2>Linux</h2>
+  <p>Komendy terminala, struktura systemu plików, skrypty Bash, zarządzanie systemem – przewodniki i przykłady.</p>
+</section>
+
+<section id="informatyka" class="tab-content">
+  <h2>Informatyka</h2>
+  <p>Algorytmy, programowanie, sieci komputerowe, bazy danych, cyberbezpieczeństwo i inne zagadnienia IT.</p>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(tab => tab.classList.remove('active'));
+
+      button.classList.add('active');
+      document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
